@@ -30,7 +30,7 @@ var Home = React.createClass({
     render: function() {
         return (
             <div style={styles.outerContainer}>
-                <div className="text-center" style={styles.innerContainer}>
+                <div className="container-fluid text-center" style={styles.innerContainer}>
                     <h2 style={styles.heading}>Enter a City and State</h2>
 
                     <GetCity label="Enter city and state" placeholder="St. George, Utah" inline={false} />
