@@ -1,0 +1,17 @@
+.main-container {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-header {
+    min-height: 60px;
+    padding: 20px 15px;
+}
+
+.main-header h1 {
+    margin: 0;
+}
+
+.main-content {
+    height: calc(100vh - 60px);
+}
