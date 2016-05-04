@@ -4,6 +4,10 @@ var GetCity = require('../components/GetCity.js');
 var weatherAPI = require('../utils/weatherAPI');
 
 var GetCityContainer = React.createClass({
+    contextTypes: {
+        router: PropTypes.object.isRequired
+    },
+
     propTypes: {
         inline: PropTypes.bool,
         label: PropTypes.string,
@@ -34,10 +38,8 @@ var GetCityContainer = React.createClass({
 
     handleSubmitLocation: function(e) {
         e.preventDefault();
-        weatherAPI.getCurrentWeather(this.state.location)
-            .then(function(data) {
-                console.log(data);
-            });
+
+        this.context.router.push('/forecast/' + this.state.location);
     },
 
     render: function() {
