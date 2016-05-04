@@ -3,10 +3,16 @@ var PropTypes = React.PropTypes;
 
 function GetCity(props) {
     return (
-        <form className={props.inline ? 'form-inline' : ''}>
+        <form className={props.inline ? 'form-inline' : ''} onSubmit={props.onSubmitLocation}>
             <div className="form-group">
                 <label className="sr-only">{props.label}</label>
-                <input type="text" className="form-control" placeholder={props.placeholder}/>
+                <input
+                    type="text"
+                    className="form-control"
+                    placeholder={props.placeholder}
+                    value={props.location}
+                    onChange={props.onUpdateLocation}
+                />
             </div>
 
             <button type="submit" className="btn btn-success">{props.buttonText}</button>
@@ -17,15 +23,11 @@ function GetCity(props) {
 GetCity.propTypes = {
     inline: PropTypes.bool,
     label: PropTypes.string,
-    placeHolder: PropTypes.string,
+    placeholder: PropTypes.string,
+    location: PropTypes.string,
     buttonText: PropTypes.string,
-};
-
-GetCity.defaultProps = {
-    inline: false,
-    label: 'Enter city and state',
-    placeholder: 'St. George, Utah',
-    buttonText: 'Get Weather'
+    onUpdateLocation: PropTypes.func.isRequired,
+    onSubmitLocation: PropTypes.func.isRequired
 };
 
 module.exports = GetCity;

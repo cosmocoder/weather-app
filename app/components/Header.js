@@ -1,5 +1,5 @@
 var React = require('react');
-var GetCity = require('./GetCity');
+var GetCityContainer = require('../containers/GetCityContainer');
 var PropTypes = React.PropTypes;
 
 function Header(props) {
@@ -13,7 +13,7 @@ function Header(props) {
 
                     <div className="col-xs-6">
                         <div className="pull-right">
-                            <GetCity inline={true} />
+                            <GetCityContainer inline={true} />
                         </div>
                     </div>
                 </div>
