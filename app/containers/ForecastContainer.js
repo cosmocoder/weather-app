@@ -1,14 +1,16 @@
 var React = require('react');
+var Forecast = require('../components/Forecast');
 var weatherAPI = require('../utils/weatherAPI');
 
-var Forecast = React.createClass({
+var ForecastContainer = React.createClass({
     contextTypes: {
         router: React.PropTypes.object.isRequired
     },
 
     getInitialState: function() {
         return {
-            isLoading: true
+            isLoading: true,
+            forecastData: []
         };
     },
 
@@ -16,22 +18,38 @@ var Forecast = React.createClass({
         weatherAPI.getWeatherForecast(this.props.routeParams.city)
             .then(function(data) {
                 this.setState({
-                    isLoading: false
+                    isLoading: false,
+                    forecastData: data.list
                 });
-                console.log(data);
             }.bind(this));
     },
 
     render: function() {
+        var forecastItems = [];
+
+        if (!this.state.loading) {
+            forecastItems = this.state.forecastData.map(function(obj, index) {
+                return (
+                    <Forecast weatherData={obj} key={index}/>
+                );
+            });
+        }
+
         return (
             this.state.isLoading ?
-            <h1 className="text-center">Loading...</h1>
+            <h1 className="text-center" style={{fontSize: '65px'}}>Loading...</h1>
             :
             <div className="container">
-                <h1 className="text-center">Forecast Component</h1>
+                <h1 className="text-center" style={{fontSize: '65px'}}>{this.props.routeParams.city}</h1>
+
+                <h2 className="text-center">Select a day</h2>
+
+                <div className="forecast-items">
+                    {forecastItems}
+                </div>
             </div>
         );
     }
 });
 
-module.exports = Forecast;
+module.exports = ForecastContainer;
