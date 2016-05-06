@@ -20,7 +20,6 @@ var styles = {
     },
 
     heading: {
-        fontWeight: 100,
         color: '#fff',
         marginTop: 0
     }
@@ -31,7 +30,7 @@ var Home = React.createClass({
         return (
             <div style={styles.outerContainer}>
                 <div className="container-fluid text-center" style={styles.innerContainer}>
-                    <h2 style={styles.heading}>Enter a City and State</h2>
+                    <h1 style={styles.heading}>Enter a City and State</h1>
 
                     <GetCityContainer label="Enter city and state" placeholder="St. George, Utah" />
                 </div>

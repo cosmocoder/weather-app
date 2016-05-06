@@ -8,7 +8,7 @@ function Header(props) {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-xs-6">
-                        <h1>{props.text}</h1>
+                        <h2>{props.text}</h2>
                     </div>
 
                     <div className="col-xs-6">
