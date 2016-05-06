@@ -24,15 +24,24 @@ var ForecastContainer = React.createClass({
             }.bind(this));
     },
 
+    handleClick: function(data) {
+        this.context.router.push({
+            pathname: '/detail/' + this.props.routeParams.city,
+            state: {
+                weatherData: data
+            }
+        });
+    },
+
     render: function() {
         var forecastItems = [];
 
         if (!this.state.loading) {
             forecastItems = this.state.forecastData.map(function(obj, index) {
                 return (
-                    <Forecast weatherData={obj} key={index}/>
+                    <Forecast handleClick={this.handleClick.bind(this, obj)} weatherData={obj} key={index} />
                 );
-            });
+            }.bind(this));
         }
 
         return (

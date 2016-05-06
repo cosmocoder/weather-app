@@ -7,7 +7,8 @@ var styles = {
         display: 'inline-block',
         width: '25%',
         padding: '20px',
-        verticalAlign: 'top'
+        verticalAlign: 'top',
+        cursor: 'pointer'
     },
 
     img: {
@@ -27,7 +28,7 @@ function Forecast(props) {
     var unixTimestamp = props.weatherData.dt;
 
     return (
-        <div style={styles.container}>
+        <div style={styles.container} onClick={props.handleClick}>
             <img src={icon} style={styles.img} />
             <span className="h3" style={styles.label}>{forecastHelpers.getDate(unixTimestamp)}</span>
         </div>
@@ -35,7 +36,8 @@ function Forecast(props) {
 }
 
 Forecast.propTypes = {
-    weatherData: PropTypes.object.isRequired
+    weatherData: PropTypes.object.isRequired,
+    handleClick: PropTypes.func.isRequired
 };
 
 module.exports = Forecast;
