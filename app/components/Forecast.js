@@ -1,43 +1,52 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-var forecastHelpers = require('../utils/forecastHelpers');
+var DayItem = require('./DayItem');
 
 var styles = {
-    container: {
-        display: 'inline-block',
-        width: '25%',
-        padding: '20px',
-        verticalAlign: 'top',
-        cursor: 'pointer'
-    },
-
-    img: {
-        height: '130px',
-        margin: '0 auto 20px auto',
-        display: 'block'
-    },
-
-    label: {
-        display: 'block',
-        textAlign: 'center'
+    heading: {
+        fontSize: '65px'
     }
 };
 
-function Forecast(props) {
-    var icon = './app/images/weather-icons/' + props.weatherData.weather[0].icon + '.svg';
-    var unixTimestamp = props.weatherData.dt;
+function ForecastUI(props) {
+    var forecastItems = props.forecastData.map(function(item, index) {
+        return (
+            <DayItem handleClick={props.handleClick.bind(null, item)} weatherData={item} key={item.dt} />
+        );
+    }.bind(this));
 
     return (
-        <div style={styles.container} onClick={props.handleClick}>
-            <img src={icon} style={styles.img} />
-            <span className="h3" style={styles.label}>{forecastHelpers.getDate(unixTimestamp)}</span>
+        <div className="container">
+            <h1 className="text-center" style={styles.heading}>{props.city}</h1>
+            <h2 className="text-center">Select a day</h2>
+
+            <div className="forecast-items">
+                {forecastItems}
+            </div>
         </div>
     );
 }
 
+function Forecast(props) {
+    return (
+        props.isLoading ?
+        <div className="container">
+            <h1 className="text-center" style={styles.heading}>Loading...</h1>
+        </div>
+        :
+        <ForecastUI
+            city={props.city}
+            forecastData={props.forecastData}
+            handleClick={props.handleClick}
+        />
+    );
+}
+
 Forecast.propTypes = {
-    weatherData: PropTypes.object.isRequired,
-    handleClick: PropTypes.func.isRequired
+    handleClick: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    forecastData: PropTypes.array.isRequired,
+    city: PropTypes.string.isRequired
 };
 
 module.exports = Forecast;
