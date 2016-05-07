@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var PropTypes = React.PropTypes;
 var DayItem = require('./DayItem');
 
@@ -29,16 +30,24 @@ function ForecastUI(props) {
 
 function Forecast(props) {
     return (
-        props.isLoading ?
-        <div className="container">
-            <h1 className="text-center" style={styles.heading}>Loading...</h1>
-        </div>
-        :
-        <ForecastUI
-            city={props.city}
-            forecastData={props.forecastData}
-            handleClick={props.handleClick}
-        />
+        <ReactCSSTransitionGroup
+            transitionName="appear"
+            transitionEnterTimeout={600}
+            transitionLeaveTimeout={600}>
+            {
+                props.isLoading ?
+                <div className="container" key="loading">
+                    <h1 className="text-center" style={styles.heading}>Loading...</h1>
+                </div>
+                :
+                <ForecastUI
+                    key="loaded"
+                    city={props.city}
+                    forecastData={props.forecastData}
+                    handleClick={props.handleClick}
+                />
+            }
+        </ReactCSSTransitionGroup>
     );
 }
 

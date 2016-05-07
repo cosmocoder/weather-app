@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var Header = require('../components/Header');
 require('../main.css');
 
@@ -9,7 +10,12 @@ var Hello = React.createClass({
                 <Header text="Clever Title" />
 
                 <div className="main-content">
-                    {this.props.children}
+                    <ReactCSSTransitionGroup
+                        transitionName="appear"
+                        transitionEnterTimeout={600}
+                        transitionLeaveTimeout={600}>
+                        {React.cloneElement(this.props.children, {key: this.props.location.pathname})}
+                    </ReactCSSTransitionGroup>
                 </div>
             </div>
         );
