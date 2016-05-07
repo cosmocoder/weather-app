@@ -18,7 +18,7 @@ var GetCityContainer = React.createClass({
         return {
             inline: false,
             label: 'Enter city and state',
-            placeholder: 'St. George, Utah',
+            placeholder: 'Calcutta, West Bengal',
             buttonText: 'Get Weather'
         };
     },

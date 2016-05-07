@@ -31,7 +31,7 @@ function Home() {
             <div className="container-fluid text-center" style={styles.innerContainer}>
                 <h1 style={styles.heading}>Enter a City and State</h1>
 
-                <GetCityContainer label="Enter city and state" placeholder="St. George, Utah" />
+                <GetCityContainer />
             </div>
         </div>
     );
