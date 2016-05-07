@@ -8,13 +8,7 @@ var DetailContainer = React.createClass({
 
     render: function() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-sm-4 col-sm-offset-4">
-                        <Detail weatherData={this.props.location.state.weatherData} city={this.props.routeParams.city}/>
-                    </div>
-                </div>
-            </div>
+            <Detail weatherData={this.props.location.state.weatherData} city={this.props.routeParams.city}/>
         );
     }
 });
