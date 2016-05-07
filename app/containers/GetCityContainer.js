@@ -25,32 +25,32 @@ var GetCityContainer = React.createClass({
 
     getInitialState: function() {
         return {
-            location: ''
+            city: ''
         };
     },
 
-    handleUpdateLocation: function(e) {
+    handleUpdateCity: function(e) {
         this.setState({
-            location: e.target.value
+            city: e.target.value
         });
     },
 
-    handleSubmitLocation: function(e) {
+    handleSubmitCity: function(e) {
         e.preventDefault();
 
-        this.context.router.push('/forecast/' + this.state.location);
+        this.context.router.push('/forecast/' + this.state.city);
     },
 
     render: function() {
         return (
             <GetCity
-                location={this.state.location}
+                city={this.state.city}
                 inline={this.props.inline}
                 label={this.props.label}
                 placeholder={this.props.placeholder}
                 buttonText={this.props.buttonText}
-                onUpdateLocation={this.handleUpdateLocation}
-                onSubmitLocation={this.handleSubmitLocation}
+                onUpdateCity={this.handleUpdateCity}
+                onSubmitCity={this.handleSubmitCity}
             />
         );
     }
