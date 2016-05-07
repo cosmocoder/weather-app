@@ -1,4 +1,5 @@
 var React = require('react');
+var Detail = require('../components/Detail');
 
 var DetailContainer = React.createClass({
     contextTypes: {
@@ -6,9 +7,14 @@ var DetailContainer = React.createClass({
     },
 
     render: function() {
-        console.log(this.props.location.state.weatherData);
         return (
-            <div>Detail</div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-4 col-sm-offset-4">
+                        <Detail weatherData={this.props.location.state.weatherData} city={this.props.routeParams.city}/>
+                    </div>
+                </div>
+            </div>
         );
     }
 });

@@ -28,6 +28,12 @@ function getDate(unixTimestamp) {
     return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
 }
 
+function getTemperature(kelvinTemp) {
+    var celsiusTemp = Math.round(kelvinTemp - 273.16);
+    return celsiusTemp;
+}
+
 module.exports = {
-    getDate: getDate
+    getDate: getDate,
+    getTemperature: getTemperature
 };
