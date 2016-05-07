@@ -15,7 +15,15 @@ var ForecastContainer = React.createClass({
     },
 
     componentDidMount: function() {
-        weatherAPI.getWeatherForecast(this.props.routeParams.city)
+        this.makeApiRequest(this.props.routeParams.city);
+    },
+
+    componentWillReceiveProps: function(nextProps) {
+        this.makeApiRequest(nextProps.routeParams.city);
+    },
+
+    makeApiRequest: function(city) {
+        weatherAPI.getWeatherForecast(city)
             .then(function(data) {
                 this.setState({
                     isLoading: false,
