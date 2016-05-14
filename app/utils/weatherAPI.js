@@ -1,12 +1,13 @@
 import axios from 'axios';
 
-var API_BASE_URL = 'http://api.openweathermap.org/data/2.5/';
+const API_BASE_URL = 'http://api.openweathermap.org/data/2.5/';
+const API_KEY = '3c84cf8aa14ae411e1de0d455332449b';
 
 function prepParams(location) {
-    var params = {
+    const params = {
         q: location,
         type: 'accurate',
-        APPID: '3c84cf8aa14ae411e1de0d455332449b',
+        APPID: API_KEY,
         cnt: 5
     };
 
@@ -20,15 +21,15 @@ function prepURL(type, location) {
 }
 
 export function getCurrentWeather(location) {
-    return axios.get(prepURL('weather', location))
-        .then(function(currentWeatherData) {
-            return currentWeatherData.data;
-        });
+    const url = prepURL('weather', location);
+
+    return axios.get(url)
+        .then((currentWeatherData) => currentWeatherData.data);
 }
 
 export function getWeatherForecast(location) {
-    return axios.get(prepURL('forecast/daily', location))
-        .then(function(forecastData) {
-            return forecastData.data;
-        });
+    const url = prepURL('forecast/daily', location);
+
+    return axios.get(url)
+        .then((forecastData) => forecastData.data);
 }
