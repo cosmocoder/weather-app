@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react';
+import {Link} from 'react-router';
 import GetCityContainer from '../containers/GetCityContainer';
 
 function Header({text}) {
@@ -7,7 +8,9 @@ function Header({text}) {
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-xs-6">
-                        <h2>{text}</h2>
+                        <h2>
+                            <Link to="/">{text}</Link>
+                        </h2>
                     </div>
 
                     <div className="col-xs-6">
