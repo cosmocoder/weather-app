@@ -1,7 +1,7 @@
 import React from 'react';
 import Detail from '../components/Detail';
 
-var DetailContainer = React.createClass({
+const DetailContainer = React.createClass({
     contextTypes: {
         router: React.PropTypes.object.isRequired
     },

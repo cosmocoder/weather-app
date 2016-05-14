@@ -2,14 +2,14 @@ import React, {PropTypes} from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import DayItem from './DayItem';
 
-var styles = {
+const styles = {
     heading: {
         fontSize: '65px'
     }
 };
 
 function ForecastUI({forecastData, handleClick, city}) {
-    var forecastItems = forecastData.map((item, index) => (
+    const forecastItems = forecastData.map((item, index) => (
         <DayItem handleClick={handleClick.bind(null, item)} weatherData={item} key={item.dt} />
     ));
 

@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {getDate} from '../utils/forecastHelpers';
 
-var styles = {
+const styles = {
     container: {
         display: 'inline-block',
         width: '25%',
@@ -23,8 +23,8 @@ var styles = {
 };
 
 function DayItem({weatherData, handleClick}) {
-    var icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
-    var unixTimestamp = weatherData.dt;
+    const icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
+    const unixTimestamp = weatherData.dt;
 
     return (
         <div style={styles.container} onClick={handleClick}>

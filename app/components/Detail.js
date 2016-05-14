@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import {getDate, getTemperature} from '../utils/forecastHelpers';
 
-var styles = {
+const styles = {
     container: {
         marginTop: '40px'
     },
@@ -12,8 +12,8 @@ var styles = {
 };
 
 function Detail({weatherData, city}) {
-    var icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
-    var unixTimestamp = weatherData.dt;
+    const icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
+    const unixTimestamp = weatherData.dt;
 
     return (
         <div className="container">

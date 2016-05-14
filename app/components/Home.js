@@ -1,7 +1,7 @@
 import React from 'react';
 import GetCityContainer from '../containers/GetCityContainer';
 
-var styles = {
+const styles = {
     outerContainer: {
         height: '100%',
         backgroundImage: "url('app/images/pattern.svg')",

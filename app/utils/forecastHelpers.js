@@ -1,4 +1,4 @@
-var days = [
+const days = [
     'Sunday',
     'Monday',
     'Tuesday',
@@ -8,7 +8,7 @@ var days = [
     'Saturday'
 ];
 
-var months = [
+const months = [
     'January',
     'February',
     'March',
@@ -24,11 +24,10 @@ var months = [
 ];
 
 export function getDate(unixTimestamp) {
-    var date = new Date(unixTimestamp * 1000);
+    const date = new Date(unixTimestamp * 1000);
     return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
 }
 
 export function getTemperature(kelvinTemp) {
-    var celsiusTemp = Math.round(kelvinTemp - 273.16);
-    return celsiusTemp;
+    return Math.round(kelvinTemp - 273.16);
 }

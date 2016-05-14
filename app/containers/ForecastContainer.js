@@ -2,7 +2,7 @@ import React from 'react';
 import Forecast from '../components/Forecast';
 import {getWeatherForecast} from '../utils/weatherAPI';
 
-var ForecastContainer = React.createClass({
+const ForecastContainer = React.createClass({
     contextTypes: {
         router: React.PropTypes.object.isRequired
     },

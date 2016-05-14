@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react';
 import GetCity from '../components/GetCity.js';
 
-var GetCityContainer = React.createClass({
+const GetCityContainer = React.createClass({
     contextTypes: {
         router: PropTypes.object.isRequired
     },

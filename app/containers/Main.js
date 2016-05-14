@@ -3,7 +3,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import Header from '../components/Header';
 import '../main.css';
 
-var Hello = React.createClass({
+const Hello = React.createClass({
     render: function() {
         return (
             <div className="main-container">
