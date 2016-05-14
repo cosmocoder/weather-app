@@ -23,9 +23,8 @@ const styles = {
 };
 
 function DayItem({weatherData, handleClick}) {
-    const icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
+    const icon = `./app/images/weather-icons/${weatherData.weather[0].icon}.svg`;
     const unixTimestamp = weatherData.dt;
-
     return (
         <div style={styles.container} onClick={handleClick}>
             <img src={icon} style={styles.img} />

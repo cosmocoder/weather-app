@@ -12,7 +12,7 @@ const styles = {
 };
 
 function Detail({weatherData, city}) {
-    const icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
+    const icon = `./app/images/weather-icons/${weatherData.weather[0].icon}.svg`;
     const unixTimestamp = weatherData.dt;
 
     return (

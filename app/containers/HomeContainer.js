@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Home from '../components/Home';
 
-const HomeContainer = React.createClass({
-    render: function() {
+class HomeContainer extends Component {
+    render () {
         return <Home/>;
     }
-});
+}
 
 export default HomeContainer;

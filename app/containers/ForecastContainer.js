@@ -1,28 +1,25 @@
-import React from 'react';
+import React, {Component} from 'react';
 import Forecast from '../components/Forecast';
 import {getWeatherForecast} from '../utils/weatherAPI';
 
-const ForecastContainer = React.createClass({
-    contextTypes: {
-        router: React.PropTypes.object.isRequired
-    },
-
-    getInitialState: function() {
-        return {
+class ForecastContainer extends Component {
+    constructor () {
+        super();
+        this.state = {
             isLoading: true,
             forecastData: []
         };
-    },
+    }
 
-    componentDidMount: function() {
+    componentDidMount () {
         this.makeApiRequest(this.props.routeParams.city);
-    },
+    }
 
-    componentWillReceiveProps: function(nextProps) {
+    componentWillReceiveProps (nextProps) {
         this.makeApiRequest(nextProps.routeParams.city);
-    },
+    }
 
-    makeApiRequest: function(city) {
+    makeApiRequest (city) {
         getWeatherForecast(city)
             .then(({list}) => (
                 this.setState({
@@ -30,27 +27,31 @@ const ForecastContainer = React.createClass({
                     forecastData: list
                 })
             ));
-    },
+    }
 
-    handleClick: function(data) {
+    handleClick (data) {
         this.context.router.push({
-            pathname: '/detail/' + this.props.routeParams.city,
+            pathname: `/detail/${this.props.routeParams.city}`,
             state: {
                 weatherData: data
             }
         });
-    },
+    }
 
-    render: function() {
+    render () {
         return (
             <Forecast
-                handleClick={this.handleClick}
+                handleClick={(data) => this.handleClick(data)}
                 isLoading={this.state.isLoading}
                 forecastData={this.state.forecastData}
                 city={this.props.routeParams.city}
             />
         );
     }
-});
+}
+
+ForecastContainer.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default ForecastContainer;
