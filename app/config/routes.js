@@ -5,7 +5,7 @@ import HomeContainer from '../containers/HomeContainer';
 import ForecastContainer from '../containers/ForecastContainer';
 import DetailContainer from '../containers/DetailContainer';
 
-const Routes = (
+export default (
     <Router history={hashHistory}>
         <Route path="/" component={Main}>
             <IndexRoute component={HomeContainer}/>
@@ -14,5 +14,3 @@ const Routes = (
         </Route>
     </Router>
 );
-
-export default Routes;
