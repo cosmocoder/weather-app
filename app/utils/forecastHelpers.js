@@ -23,17 +23,12 @@ var months = [
     'December'
 ];
 
-function getDate(unixTimestamp) {
+export function getDate(unixTimestamp) {
     var date = new Date(unixTimestamp * 1000);
     return days[date.getDay()] + ', ' + months[date.getMonth()] + ' ' + date.getDate();
 }
 
-function getTemperature(kelvinTemp) {
+export function getTemperature(kelvinTemp) {
     var celsiusTemp = Math.round(kelvinTemp - 273.16);
     return celsiusTemp;
 }
-
-module.exports = {
-    getDate: getDate,
-    getTemperature: getTemperature
-};

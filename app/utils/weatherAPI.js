@@ -1,4 +1,4 @@
-var axios = require('axios');
+import axios from 'axios';
 
 var API_BASE_URL = 'http://api.openweathermap.org/data/2.5/';
 
@@ -19,23 +19,16 @@ function prepURL(type, location) {
     return API_BASE_URL + type + '?' + prepParams(location);
 }
 
-function getCurrentWeather(location) {
+export function getCurrentWeather(location) {
     return axios.get(prepURL('weather', location))
         .then(function(currentWeatherData) {
             return currentWeatherData.data;
         });
 }
 
-function getWeatherForecast(location) {
+export function getWeatherForecast(location) {
     return axios.get(prepURL('forecast/daily', location))
         .then(function(forecastData) {
             return forecastData.data;
         });
 }
-
-var weatherAPI = {
-    getCurrentWeather: getCurrentWeather,
-    getWeatherForecast: getWeatherForecast
-};
-
-module.exports = weatherAPI;

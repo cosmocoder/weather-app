@@ -1,6 +1,5 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var forecastHelpers = require('../utils/forecastHelpers');
+import React, {PropTypes} from 'react';
+import {getDate} from '../utils/forecastHelpers';
 
 var styles = {
     container: {
@@ -23,14 +22,14 @@ var styles = {
     }
 };
 
-function DayItem(props) {
-    var icon = './app/images/weather-icons/' + props.weatherData.weather[0].icon + '.svg';
-    var unixTimestamp = props.weatherData.dt;
+function DayItem({weatherData, handleClick}) {
+    var icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
+    var unixTimestamp = weatherData.dt;
 
     return (
-        <div style={styles.container} onClick={props.handleClick}>
+        <div style={styles.container} onClick={handleClick}>
             <img src={icon} style={styles.img} />
-            <span className="h3" style={styles.label}>{forecastHelpers.getDate(unixTimestamp)}</span>
+            <span className="h3" style={styles.label}>{getDate(unixTimestamp)}</span>
         </div>
     );
 }
@@ -40,4 +39,4 @@ DayItem.propTypes = {
     handleClick: PropTypes.func.isRequired
 };
 
-module.exports = DayItem;
+export default DayItem;

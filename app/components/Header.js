@@ -1,14 +1,13 @@
-var React = require('react');
-var GetCityContainer = require('../containers/GetCityContainer');
-var PropTypes = React.PropTypes;
+import React, {PropTypes} from 'react';
+import GetCityContainer from '../containers/GetCityContainer';
 
-function Header(props) {
+function Header({text}) {
     return (
         <header className="main-header">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-xs-6">
-                        <h2>{props.text}</h2>
+                        <h2>{text}</h2>
                     </div>
 
                     <div className="col-xs-6">
@@ -26,4 +25,4 @@ Header.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-module.exports = Header;
+export default Header;

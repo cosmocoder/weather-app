@@ -1,6 +1,5 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
-var forecastHelpers = require('../utils/forecastHelpers');
+import React, {PropTypes} from 'react';
+import {getDate, getTemperature} from '../utils/forecastHelpers';
 
 var styles = {
     container: {
@@ -12,9 +11,9 @@ var styles = {
     }
 };
 
-function Detail(props) {
-    var icon = './app/images/weather-icons/' + props.weatherData.weather[0].icon + '.svg';
-    var unixTimestamp = props.weatherData.dt;
+function Detail({weatherData, city}) {
+    var icon = './app/images/weather-icons/' + weatherData.weather[0].icon + '.svg';
+    var unixTimestamp = weatherData.dt;
 
     return (
         <div className="container">
@@ -22,15 +21,15 @@ function Detail(props) {
                 <div className="col-sm-4 col-sm-offset-4">
                     <div className="text-center" style={styles.container}>
                         <img src={icon} alt="" style={styles.image} />
-                        <p className="h2">{forecastHelpers.getDate(unixTimestamp)}</p>
+                        <p className="h2">{getDate(unixTimestamp)}</p>
 
                         <br/>
 
-                        <p className="h2">{props.city}</p>
-                        <p className="h2">{props.weatherData.weather[0].description}</p>
-                        <p className="h2">min temp: {forecastHelpers.getTemperature(props.weatherData.temp.min)} &deg;C</p>
-                        <p className="h2">max temp: {forecastHelpers.getTemperature(props.weatherData.temp.max)} &deg;C</p>
-                        <p className="h2">humidity: {props.weatherData.humidity}</p>
+                        <p className="h2">{city}</p>
+                        <p className="h2">{weatherData.weather[0].description}</p>
+                        <p className="h2">min temp: {getTemperature(weatherData.temp.min)} &deg;C</p>
+                        <p className="h2">max temp: {getTemperature(weatherData.temp.max)} &deg;C</p>
+                        <p className="h2">humidity: {weatherData.humidity}</p>
 
                     </div>
                 </div>
@@ -44,4 +43,4 @@ Detail.propTypes = {
     city: PropTypes.string.isRequired
 };
 
-module.exports = Detail;
+export default Detail;

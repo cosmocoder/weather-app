@@ -1,5 +1,5 @@
-var React = require('react');
-var Detail = require('../components/Detail');
+import React from 'react';
+import Detail from '../components/Detail';
 
 var DetailContainer = React.createClass({
     contextTypes: {
@@ -13,4 +13,4 @@ var DetailContainer = React.createClass({
     }
 });
 
-module.exports = DetailContainer;
+export default DetailContainer;

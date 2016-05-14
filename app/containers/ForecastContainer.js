@@ -1,6 +1,6 @@
-var React = require('react');
-var Forecast = require('../components/Forecast');
-var weatherAPI = require('../utils/weatherAPI');
+import React from 'react';
+import Forecast from '../components/Forecast';
+import {getWeatherForecast} from '../utils/weatherAPI';
 
 var ForecastContainer = React.createClass({
     contextTypes: {
@@ -23,13 +23,13 @@ var ForecastContainer = React.createClass({
     },
 
     makeApiRequest: function(city) {
-        weatherAPI.getWeatherForecast(city)
-            .then(function(data) {
+        getWeatherForecast(city)
+            .then(({list}) => (
                 this.setState({
                     isLoading: false,
-                    forecastData: data.list
-                });
-            }.bind(this));
+                    forecastData: list
+                })
+            ));
     },
 
     handleClick: function(data) {
@@ -53,4 +53,4 @@ var ForecastContainer = React.createClass({
     }
 });
 
-module.exports = ForecastContainer;
+export default ForecastContainer;

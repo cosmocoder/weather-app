@@ -1,7 +1,7 @@
-var React = require('react');
-var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
-var Header = require('../components/Header');
-require('../main.css');
+import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import Header from '../components/Header';
+import '../main.css';
 
 var Hello = React.createClass({
     render: function() {
@@ -23,4 +23,4 @@ var Hello = React.createClass({
 });
 
 
-module.exports = Hello;
+export default Hello;

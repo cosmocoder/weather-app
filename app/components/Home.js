@@ -1,5 +1,5 @@
-var React = require('react');
-var GetCityContainer = require('../containers/GetCityContainer');
+import React from 'react';
+import GetCityContainer from '../containers/GetCityContainer';
 
 var styles = {
     outerContainer: {
@@ -37,4 +37,4 @@ function Home() {
     );
 }
 
-module.exports = Home;
+export default Home;

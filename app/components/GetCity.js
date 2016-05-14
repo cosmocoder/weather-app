@@ -1,21 +1,20 @@
-var React = require('react');
-var PropTypes = React.PropTypes;
+import React, {PropTypes} from 'react';
 
-function GetCity(props) {
+function GetCity({inline, label, placeholder, city, buttonText, onUpdateCity, onSubmitCity}) {
     return (
-        <form className={props.inline ? 'form-inline' : ''} onSubmit={props.onSubmitCity}>
+        <form className={inline ? 'form-inline' : ''} onSubmit={onSubmitCity}>
             <div className="form-group">
-                <label className="sr-only">{props.label}</label>
+                <label className="sr-only">{label}</label>
                 <input
                     type="text"
                     className="form-control"
-                    placeholder={props.placeholder}
-                    value={props.city}
-                    onChange={props.onUpdateCity}
+                    placeholder={placeholder}
+                    value={city}
+                    onChange={onUpdateCity}
                 />
             </div>
 
-            <button type="submit" className="btn btn-success">{props.buttonText}</button>
+            <button type="submit" className="btn btn-success">{buttonText}</button>
         </form>
     );
 }
@@ -30,4 +29,4 @@ GetCity.propTypes = {
     onSubmitCity: PropTypes.func.isRequired
 };
 
-module.exports = GetCity;
+export default GetCity;
